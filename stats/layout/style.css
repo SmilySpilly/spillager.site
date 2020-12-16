@@ -1,0 +1,59 @@
+/*  Login Page CSS  */
+*{
+ font-family: Arial, Helvetica, sans-serif;
+}
+body,html{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+main{
+    height: auto;
+}
+.modal {
+    padding-right: 0px !important;
+}
+.modal-open {
+    padding-right: 0px !important;
+}
+.input-div{
+    display: flex;
+    padding: 0px
+}
+
+/* Inputs Edits */
+.form-control{
+    margin-bottom: 12px;
+}
+.search-submit{
+    float: right;
+}
+
+/* Search Page title */
+.stats-title{
+    position: relative;
+    bottom: 125px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   color: rgb(85, 84, 84);
+}
+.stats-title strong{
+    font-size: 28px;
+}
+.stats-title p {
+    font-size: 13px;
+    margin: 5px 0px 0px 0px
+}
+/* Alert Box / Footer*/
+.footer{
+    position: relative;
+    top: 200px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+.showAlert{
+    display: flex;
+}
