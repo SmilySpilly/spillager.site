@@ -137,22 +137,12 @@ function sessionTimer() {
        }
     } else {
            if ((finish_time - start_time) >= 43200) {
-    
                 getTime((current_timestamp + 16) - start_time) 
-    
         } else {
-    
-                getTime(finish_time - (current_timestamp + 14 ) ) 
-                
+                getTime(finish_time - (current_timestamp + 14 ) )      
         }
     }
-    
-    
-    
-
 }
-
-
 
 $('.new-session-clear').click(function () {
     localStorage.clear()
@@ -184,23 +174,16 @@ var sessionTimerStart = setInterval(function () {
 
     } else {
         document.getElementById("timer-minutes").innerHTML = "00";
-
         document.getElementById("timer-hours").innerHTML = "0:";
-
         document.getElementById("timer-sec").innerHTML = "00";
     }
 
     if (document.getElementById("check-timer").classList.contains("active") === true || document.getElementById("check-timer").classList.contains("paused") === true) {
-
-
         $(".start-session-form").addClass("hidden");
         $(".session-ongoing-settings").removeClass("hidden");
     } else {
-
-
         $(".start-session-form").removeClass("hidden");
         $(".session-ongoing-settings").addClass("hidden");
-
     }
 
 }, 500);
@@ -208,8 +191,6 @@ var sessionTimerStart = setInterval(function () {
 // =======================
 // Timer ENDS
 // =======================
-
-
 
 // =======================
 // SESSION SETTINGS STARTS
@@ -228,13 +209,9 @@ function showBox() {
     }
 }
 
-
 var playerAPI = document.getElementById("playerAPI").value,
     playerUUID = document.getElementById("playerUUID").value;
 function requestSend() {
-    
-    
-    
     $.ajax({
 
         url: "https://api.hypixel.net/player?key=" + playerAPI + "&uuid=" + playerUUID,
@@ -253,10 +230,7 @@ function requestSend() {
 
             } else {
                 var levelxp;
-
                 for (var i = 0; i < skywarsExPerLevel.length; i++) {
-
-
 
                     if (playerEXP < skywarsExPerLevel[i]) {
 
@@ -266,7 +240,6 @@ function requestSend() {
 
                         break;
                     }
-
                 }
             }
             // ============================================
@@ -314,8 +287,6 @@ function requestSend() {
 
                 if (gamesCount > 0) {
 
-
-
                     $(".games-hide-title").addClass("hidden")
                     $("#game-container").html("")
                     document.getElementById("modalsGames").innerHTML = ""
@@ -355,8 +326,6 @@ function requestSend() {
                     var gameStatus = "Loser"
                     localStorage.setItem("game" + (gamesCount + 1), '#e62e38')
                 }
-
-
 
                 var gameKills = new Intl.NumberFormat().format(kills - sessionKillsH.value),
                     gameExperience = new Intl.NumberFormat().format(skywarsExp - gamesExp.value),
@@ -410,7 +379,6 @@ function requestSend() {
                     cache: false,
                     success: function (gameStats) {
                         
-                        
                         if(gameStats.games[0].hasOwnProperty('ended')){
                         var gameMap = gameStats.games[0].map || "Unknown",
                             gameStartTime = gameStats.games[0].date,
@@ -444,10 +412,6 @@ function requestSend() {
                         gamesShards.setAttribute("value", shards)
 
                         $('#gamescoins').attr('value', coins)
-
-                        // ============================================        
-                        // ASSIGNING VALUES [HEADS]
-                        // ============================================ 
                         
                     setTimeout(getRecentGames,2000)
                     }
@@ -457,7 +421,6 @@ function requestSend() {
             
              if (wins - sessionWinsH.value != 0 || losses - sessionLossesH.value != 0){
                           postRecentGameJS()
-                          
                       }
 
             // ============================================        
@@ -488,8 +451,6 @@ function requestSend() {
                     } else {
                         var kdColor = "#F7A531";
                     }
-
-
 
                     $("#heavenly-heads-g").attr("value", heavenly_heads - playerData.heavenly_heads)
                     $("#divine-heads-g").attr("value", divine_heads - playerData.divine_heads)
@@ -608,10 +569,7 @@ function requestSend() {
                 localStorage.setItem("highWsHistory", sessionHighWSH.value);
             
             }
-            
-       
-    
-            
+           
             if (kills - sessionKillsH.value >= 1 && deaths - sessionDeathsH.value !== 1) {
                 sessionKillstreakH.setAttribute("value", parseInt(parseInt(sessionKillstreakH.value) + (parseInt(kills - sessionKillsH.value))));
                 localStorage.setItem("ksHistory", sessionKillstreakH);
@@ -632,7 +590,7 @@ function requestSend() {
             sessionKillsH.setAttribute("value", kills);
             sessionLossesH.setAttribute("value", losses);
             sessionDeathsH.setAttribute("value", deaths);
-            
+         
             localStorage.setItem("wsHistory", sessionWinstreakH.value);
             localStorage.setItem("ksHistory", sessionKillstreakH.value);
 
@@ -645,7 +603,6 @@ function requestSend() {
                     //======================
                     // SOLO [== | ==]
                     //======================
-
                     $("#wins-solo").html(new Intl.NumberFormat().format(wins_solo) + "<font style='color:#19cd19'> (" + new Intl.NumberFormat().format(wins_solo - playerData.solo_wins) + "+)</font>");
                     $("#wins-hour-solo").html(new Intl.NumberFormat().format(((wins_solo - playerData.solo_wins) / ((sessionHours * 60) + sessionMinutes)) * 60));
                     $("#kills-solo").html(new Intl.NumberFormat().format(kills_solo) + "<font style='color:#19cd19'> (" + new Intl.NumberFormat().format(kills_solo - playerData.solo_kills) + "+)</font>");
@@ -695,8 +652,6 @@ function requestSend() {
                         } else {
                             sessionHighKSHSolo.setAttribute("value", 0)
                         }
-
-
                     }
 
                     if (wins_solo - sessionWinsHSolo.value == 1) {
@@ -736,9 +691,6 @@ function requestSend() {
 
                     localStorage.setItem("wsHistory-solo", sessionWinstreakHSolo.value);
                     localStorage.setItem("ksHistory-solo", sessionKillstreakHSolo.value);
-
-
-
 
                     $("#winstreak-solo").html(sessionWinstreakHSolo.value);
                     $("#high-winstreak-solo").html(sessionHighWSHSolo.value);
@@ -790,8 +742,6 @@ function requestSend() {
     sessionLossesHTeams.setAttribute("value", losses_teams);
     sessionDeathsHTeams.setAttribute("value", deaths_teams);
     
-
-    
     // NORMAL
     if (localStorage.getItem('wsHistory-teams') !== null) {
         sessionWinstreakHTeams.setAttribute("value", parseInt(localStorage.getItem('wsHistory-teams')))
@@ -815,7 +765,6 @@ function requestSend() {
     } else {
         sessionHighKSHTeams.setAttribute("value", 0)
     }
-
 }
 
 if (wins_teams - sessionWinsHTeams.value == 1) {
